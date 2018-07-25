@@ -21,6 +21,9 @@ Imports EPLAN.EplApi.ApplicationFramework
 Imports EPLAN.EplApi.Scripting
 Imports EPLAN.EplApi.Base
 Imports EPLAN.EplApi.Gui
+Imports System
+Imports System.Windows.Forms
+Imports System.Linq
 #End If
 
 
@@ -28,11 +31,8 @@ Imports EPLAN.EplApi.Gui
 'you load a script. Those have To be outside Of the previous conditional compiler directive
 
 
-Imports System
 Imports System.IO
-Imports System.Windows.Forms
 Imports System.Collections.Generic
-Imports System.Linq
 
 
 
@@ -41,7 +41,8 @@ Public Class SampleActionClass
     'Declare the script Action
     <DeclareAction("SampleAction")>
     Public Sub Action()
-        MsgBox("SampleAction called")
+        Call New Decider().Decide(EnumDecisionType.eOkDecision, "MyFunction was called!", "VerySimpleScript", EnumDecisionReturn.eOK, EnumDecisionReturn.eOK)
+        Return
     End Sub
 
 End Class
